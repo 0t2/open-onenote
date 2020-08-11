@@ -23,7 +23,7 @@ function App() {
     let result = src.match(regexp);
     let redirectUrl = "";
     if (result?.[1]) {
-      redirectUrl = `${window.location.origin}?uri=${result[1]}`;
+      redirectUrl = `${window.location.origin}?uri=${encodeURIComponent(result[1])}`;
     }
     navigator.clipboard.writeText(redirectUrl);
     setRedirectUrl(redirectUrl);
