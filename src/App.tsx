@@ -13,7 +13,8 @@ function App() {
   useEffect(() => {
     const oneNoteUrl = query.get("uri");
     if (oneNoteUrl) {
-      window.open(oneNoteUrl, "onenote");
+      window.location.replace(oneNoteUrl);
+      window.location.replace("/");
     }
   }, [query]);
 
@@ -23,7 +24,9 @@ function App() {
     let result = src.match(regexp);
     let redirectUrl = "";
     if (result?.[1]) {
-      redirectUrl = `${window.location.origin}?uri=${encodeURIComponent(result[1])}`;
+      redirectUrl = `${window.location.origin}?uri=${encodeURIComponent(
+        result[1]
+      )}`;
     }
     navigator.clipboard.writeText(redirectUrl);
     setRedirectUrl(redirectUrl);
